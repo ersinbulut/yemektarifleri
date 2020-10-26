@@ -1,0 +1,90 @@
+﻿@model IEnumerable<YemekTarifleri.Entity.Kategori>
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container">
+    <ol class="breadcrumb w3l-crumbs">
+        <li><a href="#"><i class="fa fa-home"></i> Anasayfa</a></li>
+        <li class="active">Menu</li>
+    </ol>
+</div>
+
+<div class="wthree-menu">
+    <img src="~/web1/images/i2.jpg" class="w3order-img" alt="">
+    <div class="container">
+        <h3 class="w3ls-title">Menu</h3>
+        <p class="w3lsorder-text"></p>
+        <div class="menu-agileinfo">
+            @foreach (var item in Model.Where(x=>x.ParentId==0))
+            {
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="/Home/YemekListesi?categoryId=@item.ParentId&subCategoryId=@item.Id">
+                        <img src="@item.KategoriResim" width="100" height="100" />
+                        @item.KategoriAd
+                    </a>
+                </div>
+            }
+
+
+            @*<div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Salatalar</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Sıcak Yemek</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Öğle Yemeği</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Ara Öğün</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Atıştırmalık</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Tatlılar</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Sulu Yemekler</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Makarna Çeşitleri</a>
+                </div>*@
+
+            <div class="clearfix"> </div>
+        </div>
+        <div class="w3spl-menu">
+            <h3 class="w3ls-title">Seasonal  Menu</h3>
+            <p class="w3lsorder-text">Here your Staple Food Varieties</p>
+            <div class="menu-agileinfo">
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Fondue Savoyarde</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Garbure</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Poulet</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Cherry Clafouti</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html"> Spinach Soufflé</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Baeckeoffe</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Ratatouille</a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-6 menu-w3lsgrids">
+                    <a href="products.html">Piperade</a>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>

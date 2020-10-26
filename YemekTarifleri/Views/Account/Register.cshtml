@@ -1,0 +1,46 @@
+﻿@using YemekTarifleri.Models
+@model Register
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<!-- breadcrumb -->
+<div class="container">
+    <ol class="breadcrumb w3l-crumbs">
+        <li><a href="#"><i class="fa fa-home"></i> Anasayfa</a></li>
+        <li class="active">Kayıt Ol</li>
+    </ol>
+</div>
+<!-- //breadcrumb -->
+<!-- login-page -->
+<div class="login-page about">
+    <img class="login-w3img" src="images/img3.jpg" alt="">
+    <div class="container">
+        <h3 class="w3ls-title w3ls-title1">Yeni bir hesap oluşturun</h3>
+        <div class="login-agileinfo">
+            <form action="/Account/Register" method="post">
+                @Html.AntiForgeryToken()
+                <input class="agile-ltext" type="text" name="Username" placeholder="Kullanıcı Adı" required="">
+                <input class="agile-ltext" type="text" name="Email" placeholder="Email" required="">
+                <input class="agile-ltext" type="password" name="password" placeholder="Şifre" required="">
+                <input class="agile-ltext" type="password" name="Repassword" placeholder="Şifre Tekrar" required="">
+                <div class="wthreelogin-text">
+                    <ul>
+                        <li>
+                            <label class="checkbox">
+                                <input type="checkbox" name="checkbox"><i></i>
+                                <span><a>Üyelik sözleşmesi</a>'ni kabul ediyorum</span>
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+                <input type="submit" value="Kayıt Ol">
+            </form>
+            <p>Zaten bir hesabın var mı ? <a href="/Account/Login"> Giriş Yap</a></p>
+        </div>
+    </div>
+</div>
+<!-- //login-page -->

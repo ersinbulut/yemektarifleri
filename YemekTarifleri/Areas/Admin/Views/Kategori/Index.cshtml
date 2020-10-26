@@ -1,0 +1,112 @@
+﻿@model IEnumerable<YemekTarifleri.Entity.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<title>Kategori Anasayfa</title>
+<h2>Kategori</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                <a class="btn btn-primary btn-block" href="@Url.Action("Create")">Yeni Kategori</a>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Kategori Adı</th>
+                            <th>Adet</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(x => x.ParentId == 0))
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@item.KategoriResim" width="75" height="50" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KategoriAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KategoriAdet)
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit",new { id = item.Id })"><i class="fa fa-fw fa-edit"></i>Düzenle</a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete",new { id = item.Id })"><i class="fa fa-fw fa-trash-o"></i>Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Kategori Adı</th>
+                            <th>Adet</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+<h2>Alt Kategori</h2>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+
+            <!-- /.box-header -->
+            <div class="box-body">
+                <a class="btn btn-primary btn-block" href="@Url.Action("SubCreate")">Yeni Alt Kategori</a>
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Alt Kategori Adı</th>
+                            <th>Adet</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Where(x => x.ParentId != 0))
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@item.KategoriResim" width="75" height="50" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KategoriAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.KategoriAdet)
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Edit",new { id = item.Id })"><i class="fa fa-fw fa-edit"></i>Düzenle</a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Delete",new { id = item.Id })"><i class="fa fa-fw fa-trash-o"></i>Sil</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Resim</th>
+                            <th>Alt Kategori Adı</th>
+                            <th>Adet</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div>
+
+

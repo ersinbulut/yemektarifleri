@@ -1,0 +1,49 @@
+﻿@using YemekTarifleri.Models
+@model IEnumerable<YemekModel>
+
+@{
+    ViewBag.Title = "YemekListesi";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-9 product-w3ls-right">
+        <div class="product-top">
+            <h4>Güncel Tarifler</h4>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="products-row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6 col-sm-4 product-grids">
+                    <div class="flip-container">
+                        <div class="flipper agile-products">
+                            <div class="front">
+                                <img src="@item.YemekResim" class="img-responsive" alt="img" style="width:250px;height:200px;">
+                                <div class="agile-product-text">
+                                    <h5>@item.YemekAd</h5>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <h4>@item.YemekAd</h4>
+                                @if (item.YemekMalzeme.Length > 120)
+                                {
+                                    <p>@item.YemekTarif.Substring(0, 120)</p>
+                                }
+                                else
+                                {
+                                    <p>@item.YemekTarif</p>
+                                }
+
+                                <a href="/Home/YemekDetay/@item.Id" @*data-toggle="modal" data-target="#myModal1"*@>Tarifi Gör</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    @Html.Action("_CategoryList", "Category")
+    <div class="clearfix"> </div>
+</div>

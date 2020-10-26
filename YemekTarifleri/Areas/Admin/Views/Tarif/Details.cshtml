@@ -1,0 +1,75 @@
+﻿@model YemekTarifleri.Entity.Tarif
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tarif</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifMalzeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifMalzeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifYapilis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifYapilis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifResim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifResim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifSahip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifSahip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifSahipMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifSahipMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TarifDurum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TarifDurum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

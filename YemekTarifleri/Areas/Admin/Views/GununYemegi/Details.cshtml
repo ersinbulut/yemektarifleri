@@ -1,0 +1,67 @@
+﻿@model YemekTarifleri.Entity.GununYemegi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GununYemegi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiMalzeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiMalzeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiTarif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiTarif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiResim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiResim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiPuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiPuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GununYemegiTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GununYemegiTarih)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

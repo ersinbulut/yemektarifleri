@@ -1,0 +1,73 @@
+﻿@model YemekTarifleri.Entity.Yorum
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Yorum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yemek.YemekAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yemek.YemekAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumAdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumAdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumOnay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumOnay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yorumicerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yorumicerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekAd)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

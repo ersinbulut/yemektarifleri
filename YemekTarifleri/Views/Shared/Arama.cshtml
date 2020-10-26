@@ -1,0 +1,10 @@
+﻿<div class="container">
+    <h2>Buluts Home <br> <span>Aradığınız Lezzetli Yemek Tarifleri Burada</span></h2>
+    <div class="agileits_search">
+        @using (@Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "form-inline navbar-search" }))
+        {
+            <input  id="" name="q" class="srchTxt" type="text" placeholder="Tarifini Aradığınız Yemek İsmi" >
+            <input type="submit" id="submitButton" value="Ara">
+        }
+    </div>
+</div>

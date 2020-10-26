@@ -1,0 +1,240 @@
+﻿@using YemekTarifleri.Entity
+@model Yemek
+@{
+    ViewBag.Title = "YemekDetay";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+
+<div id="mainBody">
+    <div class="container">
+
+        <!-- Sidebar ================================================== -->
+        @*<div id="sidebar" class="span3">
+                @Html.Action("Summary", "Cart")
+                <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                    @Html.Action("_CategoryList", "Category")
+                </ul>
+                <br>
+                @Html.Action("FeaturedProductList", "Home")
+            </div>*@
+        <!-- Sidebar end=============================================== --><br /><br />
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li><a href="/Home/Index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ana Sayfa </font></font></a> <span class="divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span></li>
+                <li><a href="/Home/Index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yemekler </font></font></a> <span class="divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span></li>
+                <li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Model.YemekAd</font></font></li>
+            </ul>
+
+
+            <div id="gallery" class="span12">
+                <br />
+                <a href="themes/images/products/large/f1.jpg" title="@Model.YemekAd">
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:100%" height="400px" class="rounded" alt="@Model.YemekAd">
+                </a>
+            </div>
+            <br />
+            <div class="span12">
+
+
+                <h2 style="text-align:left;">@Model.YemekAd Tarifi için Malzemeler</h2>
+                <li style="text-align:left;">
+                    @Model.YemekMalzeme
+                </li>
+
+                <h2 style="text-align:left;">@Model.YemekAd Yapılışı</h2>
+                <p style="text-align:left;">@Model.YemekTarif</p><br />
+
+                <table class="table table-hover">
+                    <tr class="techSpecRow"><td class="techSpecTD1">Eklenme Tarihi:</td><td class="techSpecTD2">@Model.YemekTarih.ToLongDateString()</td></tr>
+                    <tr class="techSpecRow"><td class="techSpecTD1">Puan:</td><td class="techSpecTD2">@Model.YemekPuan</td></tr>
+                </table>
+
+
+
+                <div>
+                    <h2>Resimli Anlatım</h2>
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:600px; height:300px; margin-left:25%;" />
+                    <p style="margin-left:25%;">ilk denenme</p>
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:600px; height:300px; margin-left:25%;" />
+                    <p style="margin-left:25%;">ilkinci denenme</p>
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:600px; height:300px; margin-left:25%;" />
+                    <p style="margin-left:25%;">üçüncü denenme</p>
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:600px; height:300px; margin-left:25%;" />
+                    <p style="margin-left:25%;">dördüncü denenme</p>
+                    <img src="~/Content/Images/@Model.YemekResim" style="width:600px; height:300px; margin-left:25%;" />
+                    <p style="margin-left:25%;">beşinci denenme</p>
+                </div><br />
+                <div>
+                    <h2>Videolu Tarif</h2>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/37ZMbTzZgqU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div><br />
+
+                <h2 style="text-align:left;">@Model.YemekAd Tarifine Puan Ver</h2>
+                <span class="stars">
+                    <i class="star1-hover fa fa-star-o"></i>
+                    <i class="star2-hover fa fa-star-o"></i>
+                    <i class="star3-hover fa fa-star-o"></i>
+                    <i class="star4-hover fa fa-star-o"></i>
+                    <i class="star5-hover fa fa-star-o"></i>
+                    <span class="average"></span>
+                </span><br />
+
+            </div><br />
+
+            @if (Request.IsAuthenticated)//true ise kullanıcı login olmuş demek
+            {
+                <div class="form-group">
+                    <h5>Yorum Yap</h5>
+                    <hr />
+                </div>
+                <form action="/Home/Yorum" method="post">
+                    @Html.Hidden("YemekId", Model.Id)
+                    @Html.Hidden("YemekAd", Model.YemekAd)
+                    @Html.Hidden("YorumAdSoyad", this.User.Identity.Name)
+
+                    <div class="form-group">
+                        <textarea style="width: 855px; margin: 0px 0px 10px; height: 79px;" class="form-control" rows="5" name="Yorumicerik" placeholder="Yorum.."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <input type="submit" class="btn btn-facebook" value="Gönder" />
+                        </div>
+                    </div>
+                </form>
+                if (TempData["mesaj"] != null)
+                {
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4>	<i class="icon fa fa-check"></i> Başarılı!</h4>
+                        @TempData["Mesaj"]
+                    </div>
+                }
+                <div class="form-group">
+                    <h5>Yemek Hakkındaki Yorumlar</h5>
+                    <hr />
+                </div>
+                if (Model.Yorumlar.Count == 0)
+                {
+                    <div class="alert alert-Info">
+                        <strong>Yemek hakkında yorum bulunmamaktadır!</strong>
+                    </div>
+                }
+                else
+                {
+                    <table class="table table-bordered">
+                        <tr class="media-list">
+                            <ul class="media">
+                                @foreach (var item in Model.Yorumlar.Where(x => x.YorumOnay).OrderByDescending(x => x.Id).ToList())
+                                {
+                                    <li class="media-left" style="border-radius:10px;">
+                                        <a href="">
+                                            <img class="media-object img-circle img-thumbnail" style="width:64px;" src="~/Content/Images/@Model.Yorumlar.FirstOrDefault().ProfileImageName">
+                                        </a>
+                                    </li>
+                                    <li @*class="media-body"*@ style="margin-left:70px; margin-top:-50px; list-style-type:none;">
+                                        <h4 class="media-heading">@item.YorumAdSoyad</h4>
+                                        <p style="margin-left:10px; width:700px;">@item.Yorumicerik</p>
+                                        <p><b>Yorum Tarihi:</b>  @item.YorumTarih.ToLongDateString()</p>
+                                    </li>
+
+                                }
+                            </ul>
+                        </tr>
+                    </table>
+                }
+
+            }
+            else
+            {
+                <h5>Yorum Yap</h5>
+                <div class="alert alert-Info">
+                    <strong>Üzgünüz!</strong> Yorum yapabilmek için <a href="/Account/Login" class="alert-link">giriş yapmalısınız</a>.
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<style type="text/css">
+    .fa-star-o {
+        font-size: 20px;
+        color: #808080;
+    }
+
+    .fa-star-half-o {
+        font-size: 20px;
+        color: #EDB867;
+    }
+
+    .fa-star {
+        font-size: 20px;
+        color: #EDB867;
+    }
+
+    .average {
+        font-size: 18px;
+        color: #808080;
+        padding-left: 10px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".star1-hover").hover(function () {
+            $(".star1-hover").removeClass("fa-star-o").addClass("fa-star");
+            $(".star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        }, function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        });
+
+        $(".star2-hover").hover(function () {
+            $(".star1-hover,.star2-hover").removeClass("fa-star-o").addClass("fa-star");
+            $(".star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        }, function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        });
+
+        $(".star3-hover").hover(function () {
+            $(".star1-hover,.star2-hover,.star3-hover").removeClass("fa-star-o").addClass("fa-star");
+            $(".star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        }, function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        });
+
+        $(".star4-hover").hover(function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover").removeClass("fa-star-o").addClass("fa-star");
+            $(".star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        }, function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        });
+
+        $(".star5-hover").hover(function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star-o").addClass("fa-star");
+        }, function () {
+            $(".star1-hover,.star2-hover,.star3-hover,.star4-hover,.star5-hover").removeClass("fa-star").addClass("fa-star-o");
+        });
+
+        $(".star1-hover").click(function () {
+            $(".average").text("1 puan verdiniz...")
+        });
+
+        $(".star2-hover").click(function () {
+            $(".average").text("2 puan verdiniz...")
+        });
+
+        $(".star3-hover").click(function () {
+            $(".average").text("3 puan verdiniz...")
+        });
+
+        $(".star4-hover").click(function () {
+            $(".average").text("4 puan verdiniz...")
+        });
+
+        $(".star5-hover").click(function () {
+            $(".average").text("5 puan verdiniz...")
+        });
+    });
+</script>

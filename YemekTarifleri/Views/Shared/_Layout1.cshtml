@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <head>
+        <title>Yemek Tarifleri Sitesi</title>
+        <!-- Meta tag Keywords -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="Yemek Tarifleri" />
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- //Meta tag Keywords -->
+        <!-- Custom-Files -->
+        <link rel="stylesheet" href="/web/css/bootstrap.css">
+        <!-- Bootstrap-Core-CSS -->
+        <link rel="stylesheet" href="/web/css/style.css" type="text/css" media="all" />
+        <!-- Style-CSS -->
+        <link rel="stylesheet" href="/web/css/font-awesome.css">
+        <!-- Font-Awesome-Icons-CSS -->
+        <!-- //Custom-Files -->
+        <!-- Web-Fonts -->
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+              rel="stylesheet">
+        <!-- //Web-Fonts -->
+    </head>
+
+    <style type="text/css">
+        .auto-style1 {
+            text-align: center;
+            height: 30px;
+        }
+
+        .auto-style2 {
+            font-size: large;
+        }
+
+        .auto-style9:hover {
+            color: orange;
+        }
+
+        .cizgi {
+            border: 1px solid orange;
+        }
+        <!-- Menü-- >
+        .auto-style10 {
+            font-size: x-large;
+            color: #CC0066;
+        }
+
+        .auto-style12 {
+            color: brown;
+        }
+
+        .auto-style15 {
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            -webkit-box-flex: 1;
+            text-align: left;
+        }
+
+        .auto-style16 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+            <!-- header -->
+            <header>
+                <div class="container-fluid px-lg-4" style="background-color:aqua;">
+                    <nav class="py-4">
+                        <div class="logo" id="logo">
+                            <a href="/Home/Index">Yemek Tarifleri</a>
+
+                        </div>
+                        <label for="drop" class="toggle">Menu</label>
+                        <input type="checkbox" id="drop">
+                        <ul class="menu mt-md-3">
+                            <li class="mr-lg-2"><a href="/Home/Index">ANASAYFA</a></li>
+                            <li class="mr-lg-2"><a href="/Home/Index">KATEGORİLER</a></li>
+                            <li class="mr-lg-2"><a href="GununYemegi.aspx" class="scroll">GÜNÜN YEMEĞİ</a></li>
+                            <li class="mr-lg-2"><a href="/Tarifs/TarifOner" class="scroll">TARİF ÖNER</a></li>
+                            <li class="mr-lg-2"><a href="/Home/Hakkimizda" class="scroll">HAKKIMIZDA</a></li>
+                            <li><a href="/Home/Iletisim">İLETİŞİM</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <!-- //header -->
+   
+     
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- //Menü -->
+        <!-- İçerik -->
+        <section id="about">
+            <div class="container py-lg-5">
+                <div class="text-center">
+                    <p class="main_p mt-4 mb-4 pt-2 text-center mx-auto">
+                        @*<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>*@
+                        @RenderBody()
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- //İçerik -->
+        <section class="what_you py-5" id="services">
+            <div class="container py-lg-5">
+                <div class="row about-info-grids text-center">
+                    <div class="col-md-4 about-info about-info1">
+                        <span class="fa fa-sun-o"></span>
+                        <h4>Güneş</h4>
+                        <div class="h4-underline"></div>
+                    </div>
+                    <div class="col-md-4 about-info about-info2">
+                        <span class="fa fa-umbrella"></span>
+                        <h4>Yağmur</h4>
+                        <div class="h4-underline"></div>
+                    </div>
+                    <div class="col-md-4 about-info about-info3">
+                        <span class="fa fa-cloud"></span>
+                        <h4>Oksijen</h4>
+                        <div class="h4-underline"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Misyonumuz -->
+        <section class="wedo py-5">
+            <div class="container py-lg-5">
+                <div class="text-center">
+                    <h3 class="w3_head">Misyonumuz </h3>
+                    <p class="main_p mt-4 mb-4 pt-2 text-center mx-auto">
+                        Standartlara ve gıda mevzuatına uygun kusursuz yemek üretmek
+                        Hizmeti tutarlı, müşterilerinin güvenini kazanacak biçimde ve zamanında sunarak müşteri memnuniyetini artırmak
+                        Takım ruhuna sahip, eğitimli ve güler yüzlü personeli ile gelişimini sürekli sağlamak.
+                        Ürün ve hizmet kalitesi ile sektörde aranan kuruluş olmak ve saygınlığın sürekliliğini sağlamak.
+                        İnsana ve çevreye duyarlı bir firma olmak.
+                        30 yıllık tecrübesini gelişen teknoloji ile birleştirerek hizmet vermek.
+                        % 100 Müşteri Memnuniyeti hedefine ulaşmak.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- //Misyonumuz -->
+        <!-- //Fotoğraflar -->
+        <section class="augue py-5" id="features">
+            <div class="container py-lg-5">
+                <div class="row about-info-augue">
+                    <div class="col-md-4 about-aug about-aug1">
+                        <h4>Vizyonumuz</h4>
+                        <p>
+                            Yemek Tarifi.com olarak toplu yemek sektöründe ‘’kaliteyi var olma ilkemiz’’ olarak
+                            benimseyen bir kaliteli hizmet anlayışı ile ulusal ve uluslarası alanda yer alan bir toplu
+                            yemek firması olmayı hedeflemektedir.
+                        </p>
+                    </div>
+                    <div class="col-md-4 about-aug about-aug2">
+                        <div class="augue_im1">
+                            <img src="/web/images/g1.jpg" alt="news image" class="img-fluid">
+                        </div>
+                        <div class="augue_im2 mt-4 mb-4">
+                            <img src="/web/images/g2.jpg" alt="news image" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-4 about-aug about-aug3">
+                        <div class="augue_im5 mt-4 mb-4">
+                            <img src="/web/images/g5.jpg" alt="news image" class="img-fluid">
+                        </div>
+                        <div class="augue_im6">
+                            <img src="/web/images/g6.jpg" alt="news image" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Fotoğraflar-->
+      
+        <!-- Alt Kısım -->
+        <div class="cpy-right text-center py-5">
+            <ul class="social_section_1info pt-lg-4 mb-lg-4">
+                <li><a href="https://www.facebook.com/ersinbulut61"><span class="fa fa-facebook"></span></a></li>
+                <li><a href="https://news.google.com/?tab=mn&hl=tr&gl=TR&ceid=TR:tr"><span class="fa fa-google-plus"></span></a></li>
+                <li><a href="https://www.instagram.com/ersin.buluts/?hl=tr"><span class="fa fa-instagram"></span></a></li>
+            </ul>
+            <p>
+                © 2019 Yemek Tarifleri
+            </p>
+        </div>
+        <!-- //Alt Kısım-->
+
+
+
+
+    </form>
+</body>
+</html>
+

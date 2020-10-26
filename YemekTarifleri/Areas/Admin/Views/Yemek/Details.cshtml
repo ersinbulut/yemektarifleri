@@ -1,0 +1,83 @@
+﻿@model YemekTarifleri.Entity.Yemek
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Yemek</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.KategoriAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.KategoriAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekAd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekMalzeme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekMalzeme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekTarif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekTarif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekResim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekResim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YemekPuan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YemekPuan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Durum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

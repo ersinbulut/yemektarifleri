@@ -1,0 +1,79 @@
+﻿@using YemekTarifleri.Models
+@model IEnumerable<KategoriModel>
+@{
+    IEnumerable<KategoriModel> catList = Model;
+}
+
+
+<div class="col-md-3 rsidebar">
+        <div class="rsidebar-top">
+            <div class="sidebar-row">
+                <h4>Kategoriler</h4>
+                <ul class="faq">
+                    <li class="item1"><a href="/Home/Index">Tüm Yemekler</a></li>
+                </ul>
+                <ul class="faq">
+                    @*@model List<Eticaret.Entity.Category>*@
+                    @helper GetTreeView(IEnumerable<KategoriModel> category, int parentID)
+                    {
+                        foreach (var item in category.Where(a => a.ParentId.Equals(parentID)))
+                        {
+                            string categoryUrl = $"/Home/YemekListesi?categoryId={item.ParentId}&subCategoryId={item.Id}";
+                            <li>
+                                <a href=@categoryUrl><i class="icon-chevron-right"></i>@item.KategoriAd </a>
+                                @{var submenu = category.Where(a => a.ParentId.Equals(item.Id)).Count();}
+
+                                @if (submenu > 0)
+                                {
+                                    <ul>
+                                        @GetTreeView(category, item.Id)
+                                        @*//recursive call for populate sub items here*@
+                                    </ul>
+                                }
+                            </li>
+                        }
+                    }
+
+
+                    @foreach (var item in Model.Where(x => x.ParentId == 0).ToList())
+                    {
+                        string categoryUrl = $"/Home/YemekListesi?categoryId={item.ParentId}&subCategoryId={item.Id}";
+
+                        <li>
+                            <a href=@categoryUrl>@item.KategoriAd [@item.KategoriAdet]<span class="glyphicon glyphicon-menu-down"></span></a>
+
+                            <ul style="display:none">
+                                @GetTreeView(catList, item.Id)
+                            </ul>
+                        </li>
+
+
+                    }
+                </ul>
+                <div class="clearfix"> </div>
+                <script type="text/javascript">
+                    $(function () {
+
+                        var menu_ul = $('.faq > li > ul'),
+                            menu_a = $('.faq > li > a');
+
+                        menu_ul.hide();
+
+                        menu_a.click(function (e) {
+                            e.preventDefault();
+                            if (!$(this).hasClass('active')) {
+                                menu_a.removeClass('active');
+                                menu_ul.filter(':visible').slideUp('normal');
+                                $(this).addClass('active').next().stop(true, true).slideDown('normal');
+                            } else {
+                                $(this).removeClass('active');
+                                $(this).next().stop(true, true).slideUp('normal');
+                            }
+                        });
+
+                    });
+                </script>
+
+            </div>
+        </div>
+    </div>
